@@ -2,7 +2,7 @@ const path = require("path");
 const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
-const formatMessage = require("./utils/messages");
+const formatMessage = require("../utils/messages");
 // const createAdapter = require("@socket.io/redis-adapter").createAdapter;
 // const redis = require("redis");
 require("dotenv").config();
@@ -12,7 +12,7 @@ const {
   getCurrentUser,
   userLeave,
   getRoomUsers,
-} = require("./utils/users");
+} = require("../utils/users");
 
 const app = express();
 const server = http.createServer(app);
@@ -88,6 +88,10 @@ io.on("connection", (socket) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+module.exports = (req, res) => {
+  server.emit("request", req, res);
+};
