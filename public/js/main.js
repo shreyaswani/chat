@@ -8,7 +8,7 @@ const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
-const socket = io();
+const socket = io("https://chat-chi-virid.vercel.app");
 // const socket = io("https://chat-appio.vercel.app", {
 //   path: "/socket.io/", // Ensure this matches the server's path
 //   transports: ["websocket", "polling"], // Use fallback for compatibility
