@@ -16,14 +16,14 @@ const {
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+// const io = socketio(server);
 
-// const io = socketio(server, {
-//   cors: {
-//     origin: "https://chat-appio.vercel.app",
-//     methods: ["GET", "POST"],
-//   },
-// });
+const io = socketio(server, {
+  cors: {
+    origin: "https://chat-chi-virid.vercel.app",
+    methods: ["GET", "POST"],
+  },
+});
 
 app.use(express.static(path.join(__dirname, "public")));
 
